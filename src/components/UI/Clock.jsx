@@ -1,23 +1,8 @@
-import {
-  Focus,
-  RotateCcw,
-  Settings,
-  Maximize,
-  Play,
-  Pause,
-  RotateCcw as Reset,
-  Cloud,
-  Sun,
-  CloudRain,
-  SunSnow as Snow,
-  Wind,
-} from "lucide-react";
-import { useState, useEffect } from "react";
 
+import { useState, useEffect } from "react";
 export default function Clock() {
   const [hora, setHora] = useState(new Date());
 
-  //actualizar la hora cada segundo
   useEffect(() => {
     const intervalo = setInterval(() => {
       setHora(new Date());
@@ -25,18 +10,22 @@ export default function Clock() {
     return () => clearInterval(intervalo);
   }, []);
 
-  //formatear la hora
-  const formatearHora = (hora) => {
-    return hora.toLocaleTimeString("es-ES", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
+  // Formatear hora y AM/PM por separado
+  const obtenerHoraYAmPm = (fecha) => {
+    const horas = fecha.getHours();
+    const minutos = fecha.getMinutes();
+    const horas12 = horas === 0 ? 12 : horas > 12 ? horas - 12 : horas;
+    const ampm = horas >= 12 ? 'PM' : 'AM';
+    
+    return {
+      hora: `${String(horas12).padStart(2, '0')}:${String(minutos).padStart(2, '0')}`,
+      ampm: ampm
+    };
   };
-  //funcion para formatear la hora
-  const horaFormateada = formatearHora(hora);
 
-  //efecto hover
+  const { hora: horaString, ampm } = obtenerHoraYAmPm(hora);
+
+  // efecto hover
   const [position, setPosition] = useState({ x: 50, y: 50 });
 
   const handleMouseMove = (e) => {
@@ -45,30 +34,32 @@ export default function Clock() {
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     setPosition({ x, y });
   };
+
   return (
-    <>
-      <div
-        className="col-span-2 row-span-2 bg-white/20 backdrop-blur-md rounded-lg border border-white/30"
-        onMouseMove={handleMouseMove}
-        style={{
-          background: `
-      radial-gradient(circle 300px at ${position.x}% ${position.y}%, 
-        rgba(59, 130, 246, 0.3) 0%, 
-        rgba(147, 51, 234, 0.2) 40%, 
-        rgba(236, 72, 153, 0.1) 70%, 
-        transparent 100%),
-      rgba(255, 255, 255, 0.1)
-    `,
-        }}
-      >
-        <div className="flex items-center justify-center h-full w-full">
-          <div className="text-6xl font-mono text-black">{horaFormateada}</div>
+    <div
+      className="col-span-2 row-span-2 bg-white/20 backdrop-blur-md rounded-lg border border-white/30"
+      onMouseMove={handleMouseMove}
+      style={{
+        background: `
+          radial-gradient(circle 300px at ${position.x}% ${position.y}%, 
+            rgba(59, 130, 246, 0.3) 0%, 
+            rgba(147, 51, 234, 0.2) 40%, 
+            rgba(236, 72, 153, 0.1) 70%, 
+            transparent 100%),
+          rgba(255, 255, 255, 0.1)
+        `,
+      }}
+    >
+      <div className="flex items-center justify-center h-full w-full">
+        <div className="flex items-baseline gap-2">
+          <div className="text-7xl font-mono text-shadow-black">
+            {horaString}
+          </div>
+          <div className="text-2xl font-mono text-shadow-black opacity-75 self-end mt-2">
+            {ampm}
+          </div>
         </div>
       </div>
-
-
-
-      
-    </>
+    </div>
   );
 }
