@@ -1,4 +1,5 @@
 import Dashboard from './components/Dashboard'
+import ChromaGrid from './blocks/Components/ChromaGrid/ChromaGrid'
 
 function App() {
   
@@ -8,6 +9,8 @@ function App() {
       Dashboard personal
     </h1>
     <Dashboard/>
+
+    <ChromaGrid/>
 
 
     </>

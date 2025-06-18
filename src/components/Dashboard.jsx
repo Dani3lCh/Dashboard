@@ -6,19 +6,21 @@ function Dashboard() {
   return (
     <>
       <section
-        className="bg-cyan-950 w-[90%] h-[85vh] rounded-lg 
+        className="bg-cyan-950/90 w-[90%] h-[85vh] rounded-lg 
               mt-3  m-auto 
             "
       >
         <div className="grid grid-cols-5 grid-rows-5 gap-4 h-full w-full p-8">
-          <Clock/>     
-          <div className="row-span-2 col-start-1 row-start-4 bg-red-500  rounded-lg w-full">
-          
+          <Clock />
+          <div className="row-span-2 col-start-1 row-start-4 bg-red-500  rounded-lg w-full"></div>
+          <Date />
+          <To_Do />
+          <div className="col-span-3 row-span-2 col-start-3 row-start-1 bg-red-500 rounded-lg w-full">
+            7
           </div>
-          <Date/>
-          <To_Do/>
-          <div className="col-span-3 row-span-2 col-start-3 row-start-1 bg-red-500 rounded-lg w-full">7</div>
-          <div className="col-span-3 row-span-3 col-start-3 row-start-3 bg-red-500 rounded-lg w-full">8</div>
+          <div className="col-span-3 row-span-3 col-start-3 row-start-3 bg-red-500 rounded-lg w-full">
+            8
+          </div>
         </div>
       </section>
     </>
