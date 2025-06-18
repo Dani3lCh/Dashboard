@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from "react";
 import Clock from "./UI/Clock";
 import Date from "./UI/Date";
 import To_Do from "./UI/To_Do";
@@ -10,7 +10,7 @@ function Dashboard() {
               mt-3  m-auto 
             "
       >
-        <div className="grid grid-cols-5 grid-rows-5 gap-4 h-full w-full p-5">
+        <div className="grid grid-cols-5 grid-rows-5 gap-4 h-full w-full p-8">
           <Clock/>     
           <div className="row-span-2 col-start-1 row-start-4 bg-red-500  rounded-lg w-full">
           
