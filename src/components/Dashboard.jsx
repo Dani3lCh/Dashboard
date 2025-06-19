@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Clock from "./UI/Clock";
-import Date from "./UI/Date";
+import DateComponent from "./UI/DateComponent";
 import To_Do from "./UI/To_Do";
 function Dashboard() {
   return (
@@ -13,7 +13,7 @@ function Dashboard() {
         <div className="grid grid-cols-5 grid-rows-5 gap-4 h-full w-full p-8">
           <Clock />
           <div className="row-span-2 col-start-1 row-start-4 bg-white  rounded-lg w-full"></div>
-          <Date />
+          <DateComponent />
           <To_Do />
           <div className="col-span-3 row-span-2 col-start-3 row-start-1 bg-white rounded-lg w-full">
             7
