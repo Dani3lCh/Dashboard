@@ -6,7 +6,7 @@ function Dashboard() {
   return (
     <>
       <section
-        className="bg-cyan-950/90 w-[90%] h-[85vh] rounded-lg 
+        className="bg-yellow-50 w-[90%] h-[85vh] rounded-lg 
               mt-3  m-auto 
             "
       >
